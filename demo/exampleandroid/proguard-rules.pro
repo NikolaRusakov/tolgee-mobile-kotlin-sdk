@@ -1,3 +1,6 @@
+# AGP 9.1.0 enables -repackageclasses by default; opt out to avoid reflection breakage.
+-dontrepackage
+
 # Add project specific ProGuard rules here.
 # You can control the set of applied configuration files using the
 # proguardFiles setting in build.gradle.
