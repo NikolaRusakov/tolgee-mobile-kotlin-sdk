@@ -1,4 +1,5 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+import com.google.api.ClientProto.apiVersion
 
 plugins {
     alias(libs.plugins.android) apply false
@@ -42,6 +43,13 @@ allprojects {
                 useVersion(libs.versions.atomicfu.get())
             }
         }
+    }
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    compilerOptions {
+        apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_1)
+        languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_1)
     }
 }
 
@@ -109,13 +117,16 @@ tasks.withType<DependencyUpdatesTask> {
             if (outputFile.exists()) {
                 outputFile.delete()
             }
-        } catch (ignored: Throwable) { }
+        } catch (ignored: Throwable) {
+        }
         try {
             outputFile.parentFile?.mkdirs()
-        } catch (ignored: Throwable) { }
+        } catch (ignored: Throwable) {
+        }
         try {
             outputFile.writeText(markdown)
-        } catch (ignored: Throwable) { }
+        } catch (ignored: Throwable) {
+        }
     }
     rejectVersionIf {
         isNonStable(candidate.version) && !isNonStable(currentVersion)
