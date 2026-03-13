@@ -1,5 +1,4 @@
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import com.google.api.ClientProto.apiVersion
 
 plugins {
     alias(libs.plugins.android) apply false
