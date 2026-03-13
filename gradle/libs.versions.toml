@@ -9,7 +9,7 @@
 library = "1.0.0-alpha04" # Keep at top
 activity = "1.13.0"
 android-core = "1.18.0"
-android-tools = "9.1.0"
+android-tools = "8.13.2"
 atomicfu = "0.31.0"
 auto-service = "1.1.1"
 binary-compatibility = "0.18.1"
