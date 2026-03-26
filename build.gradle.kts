@@ -52,6 +52,17 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     }
 }
 
+dokka {
+    dokkaPublications.html {
+        suppressInheritedMembers.set(true)
+        failOnWarning.set(true)
+    }
+    pluginsConfiguration.html {
+        customAssets.from("docs/tolgeeLogo.svg")
+        footerMessage.set("© 2021-2026 Tolgee s.r.o. All rights reserved")
+    }
+}
+
 tasks.withType<DependencyUpdatesTask> {
     outputFormatter {
         val updatable = this.outdated.dependencies
