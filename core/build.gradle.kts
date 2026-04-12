@@ -3,17 +3,19 @@ import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
 plugins {
-    id("com.android.library")
-    alias(libs.plugins.atomicfu)
-    id("org.jetbrains.kotlin.multiplatform")
-    id("org.jetbrains.kotlin.native.cocoapods")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.multiplatform)
+    alias(libs.plugins.cocoapods)
     alias(libs.plugins.dokka)
-    id("org.jetbrains.kotlin.plugin.serialization")
+    alias(libs.plugins.serialization)
     alias(libs.plugins.skie)
     alias(libs.plugins.vanniktech.publish)
     `maven-publish`
     signing
 }
+
+// AtomicFU must be applied after kotlin.multiplatform to avoid 'kotlin' extension conflict
+apply(plugin = "org.jetbrains.kotlinx.atomicfu")
 
 val libGroup = "io.tolgee.mobile-kotlin-sdk"
 val libName = "core"
